@@ -1,13 +1,15 @@
+import { useState } from "react";
 import { FlatList } from "react-native";
 import { BackButton } from "../../components/back-button/Index";
 import { ButtonPrimary } from "../../components/button/Index";
 import { Decks } from "../../components/decks/Index";
+import { Input } from "../../components/input/Index";
 import { Subtitle } from "../../components/subtitle/Index";
 import { Title } from "../../components/title/Index";
 import { Container } from "./Styles";
 
 export function Home() {
-  const decks = [
+    const decks = [
     { name: "Deck 1", cards: 2 },
     { name: "Deck 2", cards: 2 },
     { name: "Deck 3", cards: 2 },

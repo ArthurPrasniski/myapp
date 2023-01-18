@@ -1,4 +1,5 @@
 import { FlatList } from "react-native";
+import { BackButton } from "../../components/back-button/Index";
 import { ButtonPrimary } from "../../components/button/Index";
 import { Decks } from "../../components/decks/Index";
 import { Subtitle } from "../../components/subtitle/Index";

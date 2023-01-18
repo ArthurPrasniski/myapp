@@ -1,14 +1,16 @@
-import { TitleStyled } from "./Styles";
+import { Container, TitleStyled } from "./Styles";
 interface SubtitleProps {
   text: string;
   color?: string;
-  margin?: string;
+  margin?: number;
 }
 
 export function Title(props: SubtitleProps) {
   return (
-    <TitleStyled color={props.color} margin={props.margin}>
-      {props.text}
-    </TitleStyled>
+    <Container margin={props.margin}>
+      <TitleStyled color={props.color} >
+        {props.text}
+      </TitleStyled>
+    </Container>
   );
 }

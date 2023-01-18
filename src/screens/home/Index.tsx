@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import { FlatList } from "react-native";
 import { BackButton } from "../../components/back-button/Index";
@@ -8,8 +9,8 @@ import { Subtitle } from "../../components/subtitle/Index";
 import { Title } from "../../components/title/Index";
 import { Container } from "./Styles";
 
-export function Home() {
-    const decks = [
+export function Home({ navigation }: any) {
+  const decks = [
     { name: "Deck 1", cards: 2 },
     { name: "Deck 2", cards: 2 },
     { name: "Deck 3", cards: 2 },
@@ -36,7 +37,7 @@ export function Home() {
     <Container>
       <Title text="Bem-vindo(a)" />
       <ButtonPrimary
-        onPress={() => console.log("pressed button")}
+        onPress={() => navigation.navigate("create_deck")}
         text="Criar um deck"
         margin="45px"
       />

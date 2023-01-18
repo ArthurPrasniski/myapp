@@ -10,6 +10,7 @@ export const Button = styled.TouchableOpacity`
   padding: 16px;
   border-radius: 10px;
   margin-top: ${(props: Props) => props.margin || "0px"};
+  width: 100%;
 `;
 
 export const ButtonText = styled.Text`

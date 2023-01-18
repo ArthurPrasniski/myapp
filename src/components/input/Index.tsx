@@ -1,14 +1,15 @@
-import { Container, InputStyled } from "./Styles";
+import { Container, Label, InputStyled } from "./Styles";
 
 interface InputProps {
-  placeholder: string;
-  value: string;
+  text: string;
+  margin?: string;
 }
 
-export function Input(...rest: any) {
+export function Input({ text, margin }: InputProps, { ...rest }: any) {
   return (
-    <>
+    <Container margin={margin}>
+      <Label>{text}</Label>
       <InputStyled {...rest} />
-    </>
+    </Container>
   );
 }

@@ -7,13 +7,10 @@ interface Props {
 
 export const Button = styled.TouchableOpacity`
   background-color: transparent;
-  padding: 16px;
-  border-radius: 10px;
-  margin-top: ${(props: Props) => props.margin || "0px"};
+  margin: ${(props: Props) => props.margin || "0px 0px 0px 0px"};
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  max-width: 112px;
 `;
 
 export const ButtonText = styled.Text`

@@ -9,8 +9,8 @@ interface ButtonProps {
 
 export function ButtonPrimary(props: ButtonProps) {
   return (
-    <Button margin={props.margin} color={props.color}>
-      <ButtonText onPres={props.onPress}>
+    <Button margin={props.margin} color={props.color} onPress={props.onPress}>
+      <ButtonText>
         {props.text}
       </ButtonText>
     </Button>

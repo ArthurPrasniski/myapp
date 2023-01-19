@@ -52,6 +52,7 @@ export function CreateDeck({ navigation }: any) {
           placeholder="Nome do deck"
           onChangeText={(text: string) => setName(text)}
           value={name}
+          haveIconSearch
         />
       </View>
       <Dropdown
@@ -64,14 +65,14 @@ export function CreateDeck({ navigation }: any) {
         setItems={setItems}
       />
       <ButtonPrimary
-        onPress={() => navigation.navigate("create_deck")}
+        onPress={() => navigation.navigate("cards")}
         text="Adicionar carta"
         margin="45px"
       />
       <Subtitle text="carta(s) adicionada(s)" margin="32px" />
       <FlatList data={cards} renderItem={renderItems} />
       <ButtonPrimary
-        onPress={() => navigation.navigate("create_deck")}
+        onPress={() => navigation.navigate("home")}
         text="Salvar"
         margin="16px"
       />

@@ -1,7 +1,7 @@
 import { Container, Label, InputStyled } from "./Styles";
 
 interface InputProps {
-  text: string;
+  text?: string;
   margin?: string;
 }
 

@@ -13,6 +13,7 @@ import {
 } from "@expo-google-fonts/inter";
 import { Home } from "./src/screens/home/Index";
 import { CreateDeck } from "./src/screens/create-deck/Index";
+import { Cards } from "./src/screens/cards/Index";
 
 const Stack = createNativeStackNavigator();
 
@@ -49,6 +50,11 @@ export default function App() {
         <Stack.Screen
           name="create_deck"
           component={CreateDeck}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="cards"
+          component={Cards}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

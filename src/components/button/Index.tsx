@@ -6,6 +6,7 @@ interface ButtonProps {
   margin?: string;
   color?: string;
   width?: string;
+  colorText?: string;
 }
 
 export function ButtonPrimary(props: ButtonProps) {
@@ -16,7 +17,7 @@ export function ButtonPrimary(props: ButtonProps) {
       onPress={props.onPress}
       width={props.width}
     >
-      <ButtonText>{props.text}</ButtonText>
+      <ButtonText colorText={props.colorText}>{props.text}</ButtonText>
     </Button>
   );
 }

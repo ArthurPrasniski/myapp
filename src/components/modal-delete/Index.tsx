@@ -24,11 +24,17 @@ export function ModalDelete(props: ModalProps) {
           <Title text={props.title} color="#000" />
           <Subtitle text={props.subtitle} color="#000" align="center" />
           <ButtonContainer>
-            <ButtonPrimary text="Deletar" onPress={() => {}} width="132px" />
+            <ButtonPrimary
+              text="Deletar"
+              onPress={() => {}}
+              width="132px"
+              color="#DC2626"
+            />
             <ButtonPrimary
               text="Sair"
               onPress={props.onClose}
-              color="#DC2626"
+              colorText="#000"
+              color="#D4D4D8"
               width="132px"
             />
           </ButtonContainer>

@@ -4,6 +4,7 @@ interface Props {
   margin?: string;
   color?: string;
   width?: string;
+  colorText?: string;
 }
 
 export const Button = styled.TouchableOpacity`
@@ -15,7 +16,7 @@ export const Button = styled.TouchableOpacity`
 `;
 
 export const ButtonText = styled.Text`
-  color: #fff;
+  color: ${(props: Props) => props.colorText || "#fff"};
   font-size: 16px;
   font-weight: bold;
   text-align: center;

@@ -1,10 +1,8 @@
-import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import { FlatList } from "react-native";
-import { BackButton } from "../../components/back-button/Index";
 import { ButtonPrimary } from "../../components/button/Index";
 import { Decks } from "../../components/decks/Index";
-import { Input } from "../../components/input/Index";
+import { ModalDelete } from "../../components/modal-delete/Index";
 import { Subtitle } from "../../components/subtitle/Index";
 import { Title } from "../../components/title/Index";
 import { Container } from "./Styles";
@@ -22,15 +20,14 @@ export function Home({ navigation }: any) {
     { name: "Deck 9", cards: 2 },
     { name: "Deck 10", cards: 2 },
   ];
+  const [open, setOpen] = useState(false);
+
+  const onOpen = () => {
+    setOpen(true);
+  };
 
   const rendeItem = ({ item }: any) => {
-    return (
-      <Decks
-        text={item.name}
-        onPress={() => console.log("pressed deck")}
-        margin="12px"
-      />
-    );
+    return <Decks text={item.name} onPress={onOpen} margin="12px" />;
   };
 
   return (
@@ -43,6 +40,12 @@ export function Home({ navigation }: any) {
       />
       <Subtitle margin="51px" text="Meus decks" />
       <FlatList data={decks} renderItem={rendeItem} />
+      <ModalDelete
+        modalVisible={open}
+        title="Aviso!"
+        subtitle="Tem certza que deseja deletar esse card?"
+        onClose={() => setOpen(false)}
+      />
     </Container>
   );
 }

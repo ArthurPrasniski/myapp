@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FlatList, View } from "react-native";
 import { BackButton } from "../../components/back-button/Index";
 import { ButtonPrimary } from "../../components/button/Index";
+import { CardDeck } from "../../components/card-deck/Index";
 import { Dropdown } from "../../components/dropdown/Index";
 import { Input } from "../../components/input/Index";
 import { Subtitle } from "../../components/subtitle/Index";
@@ -32,7 +33,7 @@ export function CreateDeck({ navigation }: any) {
   const renderItems = ({ item }: any) => {
     return (
       <View>
-        <Title text={item.name} />
+        <CardDeck name={item.name} />
       </View>
     );
   };

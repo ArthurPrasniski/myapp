@@ -2,6 +2,7 @@ import styled from "styled-components/native";
 
 interface Props {
     margin?: number;
+    color?: string;
 }
 
 export const Container = styled.View`
@@ -11,5 +12,5 @@ export const Container = styled.View`
 export const TitleStyled = styled.Text`
   font-size: 32px;
   font-weight: bold;
-  color: #ffffff;
+  color: ${(props: Props) => props.color || "#FFFFFF"};
 `;

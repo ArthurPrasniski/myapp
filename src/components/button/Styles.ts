@@ -3,6 +3,7 @@ import styled from "styled-components/native";
 interface Props {
   margin?: string;
   color?: string;
+  width?: string;
 }
 
 export const Button = styled.TouchableOpacity`
@@ -10,7 +11,7 @@ export const Button = styled.TouchableOpacity`
   padding: 16px;
   border-radius: 10px;
   margin-top: ${(props: Props) => props.margin || "0px"};
-  width: 100%;
+  width: ${(props: Props) => props.width || "100%"};
 `;
 
 export const ButtonText = styled.Text`

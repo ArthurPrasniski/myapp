@@ -32,7 +32,7 @@ export function CreateDeck({ navigation }: any) {
 
   const renderItems = ({ item }: any) => {
     return (
-      <View>
+      <View style={{maxWidth: '100%'}}>
         <CardDeck name={item.name} />
       </View>
     );

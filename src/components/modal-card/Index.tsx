@@ -1,4 +1,4 @@
-import { Modal, View } from "react-native";
+import { Modal, View, Image } from "react-native";
 import { Title } from "../title/Index";
 import { Container, ContainerMain } from "./Styles";
 import { AntDesign } from "@expo/vector-icons";
@@ -8,6 +8,8 @@ interface ModalProps {
   title: string;
   modalVisible: boolean;
   onClose: () => void;
+  onPress: () => void;
+  img: string;
 }
 
 export function ModalStyled(props: ModalProps) {
@@ -37,7 +39,13 @@ export function ModalStyled(props: ModalProps) {
           <View>
             <Title text={props.title} color="#000" />
           </View>
-          <ButtonPrimary text="Adicionar" onPress={() => {}} />
+          <View>
+            <Image
+              style={{ width: 250, height: 350, marginTop: 20, marginBottom: 20 }}
+              source={{ uri: props.img }}
+            />
+          </View>
+          <ButtonPrimary text="Adicionar" onPress={props.onPress} />
         </Container>
       </Modal>
     </ContainerMain>

@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { FlatList, View } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useEffect, useState } from "react";
+import { FlatList, View, Text } from "react-native";
 import { BackButton } from "../../components/back-button/Index";
 import { ButtonPrimary } from "../../components/button/Index";
 import { CardDeck } from "../../components/card-deck/Index";
@@ -9,7 +10,13 @@ import { Subtitle } from "../../components/subtitle/Index";
 import { Title } from "../../components/title/Index";
 import { Container } from "./Styles";
 
-export function CreateDeck({ navigation }: any) {
+interface CardsProps {
+  name: string;
+  image_uris?: any;
+  id: string;
+}
+
+export function CreateDeck({ navigation }: any, cards: any) {
   const [name, setName] = useState("");
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
@@ -21,22 +28,44 @@ export function CreateDeck({ navigation }: any) {
     { label: "Cinza", value: "grey" },
   ]);
 
-  const cards = [
-    { id: 1, name: "Carta 1" },
-    { id: 2, name: "Carta 2" },
-    { id: 3, name: "Carta 3" },
-    { id: 4, name: "Carta 4" },
-    { id: 5, name: "Carta 5" },
-    { id: 6, name: "Carta 6" },
-  ];
+  const [cardsList, setCardsList] = useState<CardsProps[]>([]);
 
-  const renderItems = ({ item }: any) => {
+  const renderItems = (item: CardsProps) => {
     return (
-      <View style={{maxWidth: '100%'}}>
-        <CardDeck name={item.name} />
+      <View style={{ maxWidth: "100%" }}>
+        <CardDeck name={item?.name} onPress={() => deleteItem(item?.id)} />
       </View>
     );
   };
+
+  const getData = async () => {
+    try {
+      const value = await AsyncStorage.getItem("@storage_Key");
+      if (value !== null) {
+        setCardsList(JSON.parse(value));
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const deleteItem = async (id: string) => {
+    try {
+      const value = await AsyncStorage.getItem("@storage_Key");
+      if (value !== null) {
+        const cards = JSON.parse(value);
+        const newCards = cards.filter((item: CardsProps) => item.id !== id);
+        setCardsList(newCards);
+        await AsyncStorage.setItem("@storage_Key", JSON.stringify(newCards));
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <Container>
@@ -71,7 +100,7 @@ export function CreateDeck({ navigation }: any) {
         margin="45px"
       />
       <Subtitle text="carta(s) adicionada(s)" margin="32px" />
-      <FlatList data={cards} renderItem={renderItems} />
+      <FlatList data={cardsList} renderItem={({ item }) => renderItems(item)} />
       <ButtonPrimary
         onPress={() => navigation.navigate("home")}
         text="Salvar"
